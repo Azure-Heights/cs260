@@ -1,0 +1,84 @@
+
+@import 'nord.css';
+
+body {
+    color: var(--nord4);
+    background-color: var(--nord0);
+    margin: 8px;
+}
+
+ul {
+    list-style-type: square;
+}
+
+p {
+    margin-left: 1.5em;
+}
+
+em {
+    color: var(--nord9);
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.banner {
+    color: var(--nord8);
+    background-color: var(--nord2);
+    margin-top: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 6px;
+}
+
+.section {
+    color: var(--nord8);
+    background-color: var(--nord2);
+    padding: 0.25em;
+    padding-left: 0.5em;
+    border-radius: 6px;
+}
+
+#contact ~ p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#nav {
+    display: flex;
+    background-color: var(--nord2);
+    list-style-type: none;
+    width: 100vw;
+    margin: -8px;
+    padding: 0;
+}
+
+#nav li {
+    float: left;
+}
+
+#nav a {
+    display: block;
+    color: var(--nord9);
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+#nav a:hover {
+    background-color: var(--nord1);
+}
+
+#nav a.active-page {
+    background-color: var(--nord0);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
