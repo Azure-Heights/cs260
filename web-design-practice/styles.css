@@ -1,0 +1,155 @@
+@import 'stars.css';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+}
+
+body {
+    background-color: rgba(0,0,0,0);
+}
+
+.bg-dark {
+    background-color: rgba(0,255,0,0.33);
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    font-family: "lato", sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+    letter-spacing: 1px;
+    color: grey;
+}
+
+#banner {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    color: #FFF;
+    text-align: center;
+    margin-top: -30px;
+    padding: 0.5em 0 0.5em 10px;
+    background-color: rgba(43,43,43,0.33);
+}
+
+.title {
+    font-size: 2em;
+    letter-spacing: 10px;
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.center-pane {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 200px; */
+}
+
+.terminal {
+    display: flex;
+    flex-direction: column;
+    margin-top: 310px;
+    background-color: rgba(43,43,43,0.33);
+    border-style: solid;
+    border-color: dark-grey;
+    border-radius: 16px;
+    flex: 0 0 492px;
+    padding: 1.75em 2em 2em 2em;
+    font-family: "Inconsolata", monospace;
+}
+
+.terminal > p {
+    margin: 0.25em 0 0 0;
+}
+
+.terminal p::before {
+    color: darkred;
+    content: "[sites/how-to] ~ ";
+}
+
+.terminal .hide {
+    display: none;
+}
+
+.cursor {
+    content: "\2588";
+    animation: 1s blink step-end infinite;
+}
+
+.call-to-action {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding-left: 10px;
+    width: 150px;
+    font-size: 0.75em;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* animations */
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+@keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: inherit;
+    }
+}
+
+
+/* responsiveness */
+
+@media only screen and (min-width: 500px) {
+    #banner {
+        margin-top: -60px;
+    }
+
+    .center-pane {
+        margin-top: 200px;
+    }
+
+    .terminal {
+        margin-top: 0;
+    }
+
+    .terminal .hide {
+        display: block;
+    }
+
+    .call-to-action {
+        align-self: flex-end;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .terminal {
+        width: 892px;
+    }
+}
