@@ -1,0 +1,381 @@
+@import 'stars.css';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+}
+
+body {
+    background-color: rgba(0,0,0,0);
+    height: 100vh;
+}
+
+.bg-dark {
+    background-color: rgba(0,255,0,0.33);
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    font-family: "lato", sans-serif;
+    font-weight: 300;
+    font-size: 23px;
+    letter-spacing: 1px;
+    color: grey;
+}
+
+#banner {
+    width: 100%;
+    color: #FFF;
+    text-align: center;
+    margin: 20px 0 30px 0;
+    padding: 0.5em 0 0.5em 10px;
+    background-color: rgba(43,43,43,0.33);
+}
+
+.title {
+    font-size: 2em;
+    letter-spacing: 10px;
+}
+
+.content-bubble {
+    padding: 0.5em 0 0.5em 10px;
+    background-color: rgba(43,43,43,0.33);
+    border-style: solid;
+    border-color: grey;
+    border-radius: 16px;
+}
+
+.body-text {
+    color: white;
+}
+
+.email {
+    color: lightblue;
+    font-style: italic;
+}
+
+.accent-text {
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.center-pane {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroller {
+    overflow: scroll;
+}
+
+.footer {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.5em 0 0.5em 10px;
+    background-color: rgba(43,43,43,0.33);
+    font-size: 0.7em;
+}
+
+
+/* scroll bar */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* front page */
+
+.terminal {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(43,43,43,0.33);
+    border-style: solid;
+    border-radius: 16px;
+    flex: 0 0 492px;
+    padding: 1.75em 2em 2em 2em;
+    font-family: "Inconsolata", monospace;
+}
+
+.terminal > p {
+    margin: 0.25em 0 0 0;
+}
+
+.terminal p::before {
+    color: darkred;
+    content: "[sites/how-to] ~ ";
+}
+
+.terminal .hide {
+    display: none;
+}
+
+.cursor {
+    content: "\2588";
+    animation: 1s blink step-end infinite;
+}
+
+.call-to-action {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding-left: 10px;
+    width: 150px;
+    font-size: 0.75em;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* programs page */
+
+.programs-listing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 96vw;
+}
+
+.program {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: scroll;
+    background-color: rgba(43,43,43,0.33);
+    border-style: solid;
+    border-radius: 16px;
+    padding: 0.5em 0 0.5em 1em;
+}
+
+.program .program-title {
+    display: flex;
+    align-items: center;
+    color: ivory;
+}
+
+.program .program-title img {
+    margin-right: 0.7em;
+}
+
+label {
+    margin: 0 2% 1em 2%;
+}
+
+.program .description {
+    display: none;
+    padding: 1em;
+}
+
+.program .prompt-before {
+    padding-left: 1em;
+}
+
+.program .prompt-after {
+    display: none;
+    padding: 0 0 0 1em;
+}
+
+#expand1,
+#expand2,
+#expand3 {
+    display: none;
+}
+
+#expand1:checked + label .prompt-before,
+#expand2:checked + label .prompt-before,
+#expand3:checked + label .prompt-before {
+    display: none;
+}
+
+#expand1:checked + label .prompt-after,
+#expand2:checked + label .prompt-after,
+#expand3:checked + label .prompt-after {
+    display: block;
+}
+
+#expand1:checked + label .description,
+#expand2:checked + label .description,
+#expand3:checked + label .description {
+    display: block;
+}
+
+
+/* pricing page */
+
+table, thead, tbody, th, td, tr {
+    display: block;
+}
+
+table {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+    border-collapse: separate;
+    background-color: rgba(43,43,43,0.33);
+    border-style: solid;
+    border-radius: 16px;
+    font-size: 0.6em;
+    text-align: center;
+}
+
+thead {
+    flex: 25%;
+    display: flex;
+}
+
+tbody {
+    flex: 75%;
+    display: flex;
+}
+
+tbody tr {
+    flex: 33%;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: rgba(43,43,43,0.66);
+}
+
+th {
+    margin: 0.5em;
+    padding: 0.25em;
+}
+
+thead th {
+    border-bottom: solid;
+}
+
+tbody th {
+    border-bottom: solid;
+    border-color: rgba(0,0,0,0);
+}
+
+tr {
+    border-radius: 8px;
+}
+
+.footnotes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 2em;
+}
+
+.footnotes div {
+    margin-top: 0.8em;
+    padding: 0.25em 0.8em 0.25em 0.8em;
+    background-color: rgba(43,43,43,0.66);
+    border-radius: 8px;
+    font-size: 0.8em;
+}
+
+
+/* about page */
+
+.backed {
+    margin-top: 0.8em;
+    padding: 0.25em 0.8em 0.25em 0.8em;
+    background-color: rgba(43,43,43,0.66);
+    border-radius: 8px;
+    font-size: 0.8em;
+}
+
+.bios {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.bios > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5em;
+    border-style: solid;
+    border-color: grey;
+    border-radius: 16px;
+}
+
+.bios img {
+    height: 350px;
+    width: 100%;
+    object-fit: contain;
+    background-color: rgba(0,0,0,0);
+    border-radius: 8px;
+}
+
+
+/* animations */
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+@keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: inherit;
+    }
+}
+
+
+/* responsiveness */
+
+@media only screen and (max-width: 377px) {
+    table {
+        font-size: 0.5em;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .footer {
+        display: block;
+    }
+
+    .call-to-action {
+        align-self: flex-end;
+    }
+}
+
+@media only screen and (min-width: 727px) {
+    .medium-column {
+        width: 727px;
+    }
+
+    .terminal .hide {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .content-column {
+        width: 992px;
+    }
+}

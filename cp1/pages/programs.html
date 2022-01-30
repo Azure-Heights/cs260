@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,400,700' type='text/css'/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap"/>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'/>
+    <link rel='stylesheet' href='/styles.css'/>
+
+    <title>To The Stars Coding</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+</head>
+
+<body>
+    <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <div class='container-fluid'>
+            <div class='navbar-brand' href='/index.html'>To The Stars Coding</div>
+            <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+            </button>
+            <div class='collapse navbar-collapse' id='navbarNav'>
+                <ul class='navbar-nav ml-auto'>
+                    <li class='nav-item'>
+                        <a class='nav-link' aria-current='page' href='/index.html'>Home</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link active' aria-current='page' href='#'>Programs</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='/pages/pricing.html'>Pricing</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='/pages/about.html'>About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id='stars'></div>
+    <div id='stars2'></div>
+
+    <div class='page scroller'>
+        <div id='banner'>
+            <div class='title accent-text'>
+                Programs Offered
+            </div>
+        </div>
+
+        <div class='center-pane'>
+            <div class='programs-listing content-column'>
+
+                <input type='checkbox' id='expand1'/>
+                <label for='expand1'>
+                    <div class='program'>
+                        <div class='program-title'>
+                            <img src='/images/html-icon.png' width=100px/>
+                            Web Development
+                        </div>
+                        <div class='prompt-before'>Click to expand.</div>
+                        <div class='prompt-after'>Click to minimize.</div>
+                        <div class='description body-text'>
+                            This class covers HTML, CSS, and Javascript,
+                            which form the foundations for every webpage
+                            on the internet.
+                            <br/><br/>
+                            We will follow the content found in
+                            <a href='https://www.internetingishard.com/html-and-css/'>
+                                HTML & CSS is Hard.
+                            </a> Despite the name, this is a solid
+                            resource that any beginning web
+                            developer should have under their belt.
+                            Many sites can be built on HTML and CSS
+                            alone, as this website is. After that
+                            foundation, we will introduce Javascript
+                            and the Vue framework for creating more
+                            interactive webpages.
+                        </div>
+                    </div>
+                </label>
+
+                <input type='checkbox' id='expand2'/>
+                <label for='expand2'>
+                    <div class='program'>
+                        <div class='program-title'>
+                            <img src='/images/python-icon.png' width=100px/>
+                            Python
+                        </div>
+                        <div class='prompt-before'>Click to expand.</div>
+                        <div class='prompt-after'>Click to minimize.</div>
+                        <div class='description body-text'>
+                            Python is a popular programming language, from
+                            beginners to experts in various fields. This
+                            is a good intro to programming in general, and
+                            an amazing option if you've been wanting to get
+                            into programming but never knew where to start.
+                            <br/><br/>
+                            Students will start with the fundamentals of
+                            Python: basic arithmetic, functions, and user
+                            input. Class will then move to cover
+                            object-oriented programming and classes, and
+                            finish up with decorators and meta-programming.
+                        </div>
+                    </div>
+                </label>
+
+                <input type='checkbox' id='expand3'/>
+                <label for='expand3'>
+                    <div class='program'>
+                        <div class='program-title'>
+                            <img src='/images/kubernetes-icon.png' width=100px/>
+                            Kubernetes
+                        </div>
+                        <div class='prompt-before'>Click to expand.</div>
+                        <div class='prompt-after'>Click to minimize.</div>
+                        <div class='description body-text'>
+                            Kubernetes is a widely-used software for automated
+                            management of containerized applications. This
+                            course is a great way to develop skills that are
+                            highly valued in the industry.
+                            <br/><br/>
+                            We begin at the basics by discussing Docker, the
+                            container runtime that Kubernetes builds on top of.
+                            After students have a comfortable foundation with
+                            Docker, they will learn the fundamentals of
+                            Kubernetes by building their own clusters from
+                            scratch with a set of Raspberry Pis. Finally,
+                            we will go over more advanced concepts like logging
+                            and accessing the cluster over the internet.
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class='footer'>
+            Want a head start?
+            <a href='https://github.com/Azure-Heights/cs260/tree/main/cp1'>See this page on GitHub!</a>
+        </div>
+    </div>
+
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script>
+</body>
