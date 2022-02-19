@@ -29,7 +29,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 98vh;
+    height: 96vh;
     font-family: "lato", sans-serif;
     font-weight: 300;
     font-size: 23px;
@@ -141,7 +141,6 @@ input:checked + label .catalog-section-content {
 }
 
 .footer {
-    display: none;
     position: absolute;
     bottom: 0;
     width: 100%;
