@@ -60,10 +60,10 @@ loadData = async function() {
         let currentPage = await (await fetch(url)).json();
         loadPage(currentPage, endpoint);
 
-        // while (currentPage.next != null) {
-        //     currentPage = await (await fetch(currentPage.next)).json();
-        //     loadPage(currentPage, endpoint);
-        // }
+        while (currentPage.next != null) {
+            currentPage = await (await fetch(currentPage.next)).json();
+            loadPage(currentPage, endpoint);
+        }
     }
 
     for (let i = 0; i < data.films.length; i++)
