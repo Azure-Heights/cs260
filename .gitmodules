@@ -7,3 +7,6 @@
 [submodule "xkcd"]
 	path = xkcd
 	url = https://github.com/BYUCS260/xkcd-browser-Azure-Heights
+[submodule "groceries"]
+	path = groceries
+	url = https://github.com/BYUCS260/grocery-store-Azure-Heights
