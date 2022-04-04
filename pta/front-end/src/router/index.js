@@ -20,14 +20,54 @@ const routes = [
         component: AbilitiesView
     },
     {
+        path: '/abilities/:current',
+        name: 'abilities focused',
+        component: AbilitiesView,
+        props: function (route) {
+            return {
+                current: route.params.current
+            }
+        }
+    },
+    {
         path: '/moves',
         name: 'moves',
-        component: MovesView
+        component: MovesView,
+        props: function (route) {
+            return {
+                current: route.params.current
+            }
+        }
+    },
+    {
+        path: '/moves/:current',
+        name: 'moves focused',
+        component: MovesView,
+        props: function (route) {
+            return {
+                current: route.params.current
+            }
+        }
     },
     {
         path: '/species',
         name: 'species',
-        component: SpeciesView
+        component: SpeciesView,
+        props: function (route) {
+            return {
+                current: route.params.current
+            }
+        }
+    },
+    {
+        path: '/species/:current',
+        name: 'species focused',
+        component: SpeciesView,
+        props: function (route) {
+            return {
+                current: route.params.current
+            }
+        }
     },
 ]
 

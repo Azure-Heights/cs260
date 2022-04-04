@@ -29,14 +29,15 @@
 
         <div v-if='formSelected === "view"' class='data-list'>
             <div v-for='item in data' :key='item.name' class='data-listing'>
-                {{item.name}}
+                <router-link :to='`/${subset}/${item._id}`'>{{item.name}}</router-link>
             </div>
         </div>
         <div v-else-if='formSelected === "edit"' class='submit-button'>
-            <button type="button" @click='putEdit()'>Submit!</button>
+            <button type="button" @click='putEdit()'>Submit</button>
+            <button type="button" @click='deleteOld()'>Delete</button>
         </div>
         <div v-else-if='formSelected === "create"' class='submit-button'>
-            <button type="button" @click='postNew()'>Submit!</button>
+            <button type="button" @click='postNew()'>Submit</button>
         </div>
     </div>
 </template>
@@ -71,13 +72,14 @@ export default {
     },
     computed: {
         focused() {
-            return this.data.filter(data => data.name == this.current);
+            return this.data.filter(data => data._id === this.current);
         },
     },
     watch: {
         focused(val) {
             // TODO: check for arrays and properly handle them
-            this.editingData = JSON.parse(JSON.stringify(val[0]));
+            if (val.length)
+                this.editingData = JSON.parse(JSON.stringify(val[0]));
         },
     },
     created() {
@@ -111,6 +113,15 @@ export default {
                 console.log(error);
             }
         },
+        async deleteOld() {
+            try {
+                await axios.delete(`/api/${this.subset}/${this.editingData._id}`);
+                this.getData();
+                this.formSelected = 'view';
+            } catch (error) {
+                console.log(error);
+            }
+        }
     },
 }
 </script>

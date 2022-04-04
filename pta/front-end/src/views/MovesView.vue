@@ -1,6 +1,6 @@
 <template>
     <div class='page'>
-        <DataView subset='moves' current='Test Move'/>
+        <DataView subset='moves' :current='current'/>
     </div>
 </template>
 
@@ -12,9 +12,9 @@ export default {
     components: {
         DataView,
     },
-    /* props: { */
-    /*     current: Number, */
-    /* }, */
+    props: {
+        current: String,
+    },
 }
 </script>
 
