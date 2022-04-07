@@ -19,12 +19,19 @@
                 <div v-else-if='formSelected === "edit"' class='edit-box'>
                     <input v-model='editingData[field]'/>
                 </div>
-                <div v-else-if='formSelected === "create"' class='create-box'>
-                    <input v-model='creatingData[field]'/>
-                </div>
-
             </div>
 
+        </div>
+
+        <div v-if='formSelected === "create"'>
+            <div v-for='field in dataFields' :key='field' :id='field' class='field'>
+                <div class='field-name'>
+                    {{utils.titleCase(field)}}:
+                </div>
+                <div class='create-box'>
+                    <input v-model='creatingData[field]'/>
+                </div>
+            </div>
         </div>
 
         <div v-if='formSelected === "view"' class='data-list'>
@@ -61,8 +68,6 @@ export default {
     data () {
         return {
             utils: utils,
-            // TODO: remove this
-            console: console,
             data: [ ],
             editingData: { },
             creatingData: { },
