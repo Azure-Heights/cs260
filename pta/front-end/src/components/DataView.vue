@@ -1,51 +1,61 @@
 <template>
     <div class='data'>
-        <ToggleSelection :options='[ "View", "Edit", "Create" ]' default='View'
-            @selected-view='formSelected = "view"'
-            @selected-edit='formSelected = "edit"'
-            @selected-create='formSelected = "create"'
-        />
+        <div>
+            <ToggleSelection :options='[ "View", "Edit", "Create" ]' default='View'
+                @selected-view='formSelected = "view"'
+                @selected-edit='formSelected = "edit"'
+                @selected-create='formSelected = "create"'
+            />
 
-        <div v-for='item in focused' :key='item.name' class='focused'>
+            <div v-if='!(formSelected === "create")'>
+                <div v-for='item in focused' :key='item.name' class='focused field-container'>
 
-            <div v-for='field in dataFields' :key='field' :id='field' class='field'>
-                <div class='field-name'>
-                    {{utils.titleCase(field)}}:
+                    <template v-for='field in dataFields'>
+                        <div :id='field' :key='field' class='field'>
+                            <div class='field-name'>
+                                {{utils.titleCase(field)}}:
+                            </div>
+
+                            <div v-if='formSelected === "view"' class='field-value'>
+                                {{Array.isArray(item[field]) ? item[field].join(', ') : item[field]}}
+                            </div>
+                            <div v-else-if='formSelected === "edit"' class='edit-box'>
+                                <input v-model='editingData[field]'/>
+                            </div>
+                        </div>
+
+                        <div :id='`${field}-after`' :key='field'></div>
+                    </template>
+
                 </div>
+            </div>
 
-                <div v-if='formSelected === "view"' class='field-value'>
-                    {{Array.isArray(item[field]) ? item[field].join(', ') : item[field]}}
-                </div>
-                <div v-else-if='formSelected === "edit"' class='edit-box'>
-                    <input v-model='editingData[field]'/>
+            <div v-if='formSelected === "create"' class='field-container'>
+                <div v-for='field in dataFields' :key='field' :id='field' class='field'>
+                    <div class='field-name'>
+                        {{utils.titleCase(field)}}:
+                    </div>
+                    <div class='create-box'>
+                        <input v-model='creatingData[field]'/>
+                    </div>
                 </div>
             </div>
 
-        </div>
-
-        <div v-if='formSelected === "create"'>
-            <div v-for='field in dataFields' :key='field' :id='field' class='field'>
-                <div class='field-name'>
-                    {{utils.titleCase(field)}}:
-                </div>
-                <div class='create-box'>
-                    <input v-model='creatingData[field]'/>
-                </div>
+            <div v-if='formSelected === "edit"' class='submit-button'>
+                <button type="button" @click='putEdit()'>Submit</button>
+                <button type="button" @click='deleteOld()'>Delete</button>
+            </div>
+            <div v-else-if='formSelected === "create"' class='submit-button'>
+                <button type="button" @click='postNew()'>Submit</button>
             </div>
         </div>
 
-        <div v-if='formSelected === "view"' class='data-list'>
+        <div v-if='formSelected === "view" || formSelected === "edit"' class='data-list'>
             <div v-for='item in data' :key='item.name' class='data-listing'>
                 <router-link :to='`/${subset}/${item._id}`'>{{item.name}}</router-link>
             </div>
         </div>
-        <div v-else-if='formSelected === "edit"' class='submit-button'>
-            <button type="button" @click='putEdit()'>Submit</button>
-            <button type="button" @click='deleteOld()'>Delete</button>
-        </div>
-        <div v-else-if='formSelected === "create"' class='submit-button'>
-            <button type="button" @click='postNew()'>Submit</button>
-        </div>
+
     </div>
 </template>
 
@@ -84,7 +94,7 @@ export default {
         focused(val) {
             // TODO: check for arrays and properly handle them
             if (val.length)
-                this.editingData = JSON.parse(JSON.stringify(val[0]));
+            this.editingData = JSON.parse(JSON.stringify(val[0]));
         },
     },
     created() {
@@ -131,13 +141,28 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.data {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 .field {
     border-style: solid;
     border-width: 2px;
     border-radius: 0.5em;
-    margin: 0.5em;
-    padding: 0.25em;
+    border-color: #434c5e;
+    padding: 0.5em;
+    margin: 0.25em;
+    background-color: #3b4252;
 }
 
 .data-list {
@@ -146,5 +171,8 @@ export default {
 
 input {
     width: 100%;
+    color: #d8dee9;
+    background-color: #4c566a;
+    border-radius: 4px;
 }
 </style>
