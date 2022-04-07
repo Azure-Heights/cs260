@@ -19,4 +19,10 @@ export default {
 </script>
 
 <style>
+#name,
+#type,
+#damage,
+#description {
+    flex-basis: 100%;
+}
 </style>

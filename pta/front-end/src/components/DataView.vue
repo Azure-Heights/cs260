@@ -1,61 +1,64 @@
 <template>
-    <div class='data'>
-        <div>
-            <ToggleSelection :options='[ "View", "Edit", "Create" ]' default='View'
-                @selected-view='formSelected = "view"'
-                @selected-edit='formSelected = "edit"'
-                @selected-create='formSelected = "create"'
-            />
+    <div class='wrapper'>
+        <ToggleSelection :options='[ "View", "Edit", "Create" ]' default='View'
+            @selected-view='formSelected = "view"'
+            @selected-edit='formSelected = "edit"'
+            @selected-create='formSelected = "create"'
+        />
 
-            <div v-if='!(formSelected === "create")'>
-                <div v-for='item in focused' :key='item.name' class='focused field-container'>
+        <div class='data'>
+            <div class='inner-data'>
+                <div v-if='!(formSelected === "create")'>
+                    <div v-for='item in focused' :key='item.name' class='focused field-container'>
 
-                    <template v-for='field in dataFields'>
-                        <div :id='field' :key='field' class='field'>
-                            <div class='field-name'>
-                                {{utils.titleCase(field)}}:
+                        <template v-for='field in dataFields'>
+                            <div :id='field' :key='field' class='field'>
+                                <div class='field-name'>
+                                    {{utils.titleCase(field)}}:
+                                </div>
+
+                                <div v-if='formSelected === "view"' class='field-value'>
+                                    {{Array.isArray(item[field]) ? item[field].join(', ') : item[field]}}
+                                </div>
+                                <div v-else-if='formSelected === "edit"' class='edit-box'>
+                                    <input v-model='editingData[field]'/>
+                                </div>
                             </div>
 
-                            <div v-if='formSelected === "view"' class='field-value'>
-                                {{Array.isArray(item[field]) ? item[field].join(', ') : item[field]}}
-                            </div>
-                            <div v-else-if='formSelected === "edit"' class='edit-box'>
-                                <input v-model='editingData[field]'/>
-                            </div>
+                            <div :id='`${field}-after`' :key='field'></div>
+                        </template>
+
+                    </div>
+                </div>
+
+                <div v-if='formSelected === "create"' class='field-container'>
+                    <div v-for='field in dataFields' :key='field' :id='field' class='field'>
+                        <div class='field-name'>
+                            {{utils.titleCase(field)}}:
                         </div>
+                        <div class='create-box'>
+                            <input v-model='creatingData[field]'/>
+                        </div>
+                    </div>
+                </div>
 
-                        <div :id='`${field}-after`' :key='field'></div>
-                    </template>
-
+                <div v-if='formSelected === "edit"' class='submit-button'>
+                    <button type="button" @click='putEdit()'>Submit</button>
+                    <button type="button" @click='deleteOld()'>Delete</button>
+                </div>
+                <div v-else-if='formSelected === "create"' class='submit-button'>
+                    <button type="button" @click='postNew()'>Submit</button>
                 </div>
             </div>
 
-            <div v-if='formSelected === "create"' class='field-container'>
-                <div v-for='field in dataFields' :key='field' :id='field' class='field'>
-                    <div class='field-name'>
-                        {{utils.titleCase(field)}}:
-                    </div>
-                    <div class='create-box'>
-                        <input v-model='creatingData[field]'/>
-                    </div>
+            <div v-if='formSelected === "view" || formSelected === "edit"' class='data-list'>
+                <div class='list-name'>{{utils.titleCase(subset)}} List:</div>
+                <div v-for='item in data' :key='item.name' class='data-listing'>
+                    <router-link :to='`/${subset}/${item._id}`'>{{item.name}}</router-link>
                 </div>
             </div>
 
-            <div v-if='formSelected === "edit"' class='submit-button'>
-                <button type="button" @click='putEdit()'>Submit</button>
-                <button type="button" @click='deleteOld()'>Delete</button>
-            </div>
-            <div v-else-if='formSelected === "create"' class='submit-button'>
-                <button type="button" @click='postNew()'>Submit</button>
-            </div>
         </div>
-
-        <div v-if='formSelected === "view" || formSelected === "edit"' class='data-list'>
-            <div v-for='item in data' :key='item.name' class='data-listing'>
-                <router-link :to='`/${subset}/${item._id}`'>{{item.name}}</router-link>
-            </div>
-        </div>
-
     </div>
 </template>
 
@@ -142,6 +145,20 @@ export default {
 </script>
 
 <style>
+input {
+    width: 100%;
+    color: #d8dee9;
+    background-color: #4c566a;
+    border-radius: 4px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .data {
     display: flex;
     flex-direction: column;
@@ -155,6 +172,10 @@ export default {
     flex-wrap: wrap;
 }
 
+.field-name {
+    margin-bottom: 0.25em;
+}
+
 .field {
     border-style: solid;
     border-width: 2px;
@@ -165,14 +186,42 @@ export default {
     background-color: #3b4252;
 }
 
-.data-list {
-    margin-top: 2em;
+.list-name {
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
-input {
-    width: 100%;
-    color: #d8dee9;
-    background-color: #4c566a;
-    border-radius: 4px;
+.data-list {
+    margin-top: 2em;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.5em;
+    border-color: #434c5e;
+    padding: 1em;
+    background-color: #3b4252;
+}
+
+@media only screen and (min-width: 800px) {
+    .data {
+        flex-direction: row-reverse;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .data-list {
+        margin-top: 0;
+        flex: 1;
+    }
+
+    .field-container {
+        padding-bottom: 0;
+        flex: 7;
+    }
+
+    .inner-data {
+        flex: 7;
+    }
 }
 </style>

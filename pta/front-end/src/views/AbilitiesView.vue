@@ -17,3 +17,11 @@ export default {
     },
 }
 </script>
+
+<style>
+#name,
+#tags,
+#description {
+    flex-basis: 100%;
+}
+</style>

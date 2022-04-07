@@ -7,7 +7,7 @@
                 @click='changeOption(key)'
                 :class="['btn', { 'btn-primary': selected === key, 'btn-default': selected !== key }]"
             >{{ val }}</button>
-  </div>
+        </div>
     </div>
 </template>
 
