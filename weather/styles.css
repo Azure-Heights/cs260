@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --main: #005986;
+    --dark: #003550;
+    --highlight: #337A9E;
+    --text: white;
+}
+
+html {
+    color: var(--text);
+    background-color: var(--main);
+}
+
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    color: var(--highlight);
+}
+
+h1 {
+    margin: 1em;
+}
+
+form {
+    margin-bottom: 1em;
+}
+
+#forecast-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.banner {
+    background-color: var(--dark);
+    font-size: 2em;
+    margin: 0.75em 0 0.5em 0;
+    padding: 1em;
+    width: 90%;
+}
+
+#weatherResults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#forecastResults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.weather-results {
+    background-color: var(--highlight);
+    border-radius: 0.5em;
+    margin: 0.25em;
+    padding: 1em;
+    width: 80%;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--highlight);
+    border-radius: 0.5em;
+    margin: 0.25em 0.2em 2em 0.2em;
+    padding: 1em;
+}
+
+.date {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.forecast {
+    border-bottom-style: solid;
+    border-color: white;
+    border-width: 2px;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    width: 250px;
+}
+
+#footer.banner {
+    font-size: 1em;
+}
+
+@media only screen and (min-width: 772px) {
+    #forecastResults {
+        flex-direction: column;
+    }
+
+    .day {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80%;
+    }
+
+    .forecast {
+        width: 150px;
+    }
+    
+    .date {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .weather-results,
+    .day {
+        width: 90%;
+    }
+}
+

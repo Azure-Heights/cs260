@@ -1,0 +1,262 @@
+@import '/css/colors.css';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--body);
+    /* padding-top: 4em; */
+}
+
+a {
+    color: var(--body);
+}
+
+nav {
+    box-shadow: 0px 0px 5px 0px black;
+    border-radius: 8px;
+    margin: 8px;
+}
+
+nav.bg-dark {
+    background-color: var(--header) !important;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--inset);
+    color: white;
+}
+
+.center-pane {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    padding: 8px;
+    font-size: 3em;
+    text-align: center;
+}
+
+.body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--body);
+}
+
+.text {
+    padding: 2em 5em 2em 5em;
+    text-align: center;
+}
+
+.footer {
+    background-color: var(--footer);
+    padding: 2em 2em 2em 2em;
+}
+
+
+/* accent elements */
+
+.text.accent-box {
+    margin-bottom: 24px;
+}
+
+.accent-box {
+    width: 70%;
+    background-color: var(--accent);
+    border-style: solid;
+    border-color: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 2em 3em 2em 3em;
+}
+
+.with-alert {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1em;
+}
+
+.with-alert .accent-box {
+    flex: 1;
+}
+
+.with-alert .text {
+    flex: 2;
+}
+
+
+/* front page link cards */
+
+.link-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 0 5% 0 5%;
+}
+
+a.link-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+    color: inherit;
+    background-color: var(--accent);
+    text-decoration: inherit;
+    box-shadow: 0px 0px 4px 0px black;
+    border-radius: 8px;
+    margin: 8px;
+    padding: 1em 2em 1em 2em;
+    transition: all 0.2s ease-in-out;
+}
+
+.link-card:hover {
+    transform: scale(1.025);
+    box-shadow: 0px 0px 8px 0px black;
+}
+
+.link-card .heading {
+    font-size: 1.5em;
+    margin: 0.25em 0 0.25em;
+    text-align: center;
+}
+
+.link-card .description {
+    margin-top: 1em;
+    text-align: center;
+}
+
+/* photo display */
+
+.photo-wrapper {
+    margin: 8px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.photo-wrapper img {
+    flex: auto;
+    align-self: flex-start;
+    width: 250px;
+    max-width: 400px;
+    min-height: 150px;
+    margin: 8px;
+    border-radius: 8px;
+    box-shadow: 0px 1px 3px black;
+}
+
+
+/* review display */
+
+.review-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--accent);
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px 0px black;
+    width: 80%;
+    margin: 8px;
+    padding: 1em;
+}
+
+
+/* about me page */
+
+.about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.about-me img {
+    width: 90%;
+    max-height: 500px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px 0px black;
+}
+
+.about-me .description {
+    width: 90%;
+    background-color: var(--accent);
+    border-radius: 8px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    padding: 2em 3em 2em 3em;
+    box-shadow: 0px 0px 4px 0px black;
+}
+
+
+/* dropoff shadows */
+
+.dropoff {
+    box-shadow: 0px 0px 16px 0px black;
+}
+
+.dropoff-wrapper-top {
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+.dropoff-wrapper-bottom {
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+
+
+/* responsiveness */
+
+@media only screen and (min-width: 992px) {
+    .photo-display,
+    .footer,
+    .dropoff-wrapper-top,
+    .dropoff-wrapper-bottom {
+        width: 100%;
+    }
+
+    :not(.with-alert) > .accent-box,
+    :not(.with-alert) > .text,
+    .center-pane,
+    .photo-wrapper,
+    .link-card-wrapper {
+        width: 992px;
+    }
+
+    .with-alert {
+        flex-direction: row;
+    }
+
+    .review {
+        width: 300px;
+    }
+
+    .about-me img {
+        align-self: center !important;
+        height: 500px;
+        width: auto;
+    }
+
+    .about-me .description {
+        width: 600px;
+    }
+}

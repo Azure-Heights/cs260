@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <title>XKCD Browser</title>
+</head>
+
+<body>
+
+  <h1>XKCD Browser</h1>
+  <div id="app">
+      <div v-if="loading">
+          <p>Loading...</p>
+      </div>
+
+      <div v-else>
+          <p>
+          <button v-on:click="firstComic" :disabled="isFirstComic">First</button>
+          <button v-on:click="previousComic" :disabled="isFirstComic">Previous</button>
+          <button v-on:click="randomComic">Random</button>
+          <button v-on:click="nextComic" :disabled="isLastComic">Next</button>
+          <button v-on:click="latestComic" :disabled="isLastComic">Latest</button>
+          </p>
+
+          <h2>{{current.safe_title}}</h2>
+          <img v-bind:src="current.img" v-bind:alt="current.alt">
+          <p>{{current.alt}}</p>
+          <p><i>#{{current.num}}, drawn on {{current.day}} {{month}} {{current.year}}</i></p>
+
+          <star-rating v-model="rating" @rating-selected="setRating"
+              v-bind:increment="0.5"
+              v-bind:show-rating="false"
+              active-color="#f00">
+          </star-rating>
+          <p>Average Rating: {{rating > 0 ? rating.toFixed(1) : 0}}</p>
+
+          <h3>Add a Comment</h3>
+          <form v-on:submit.prevent="addComment">
+              <input v-model="addedName" placeholder="Name"></p>
+              <textarea v-model="addedComment"></textarea>
+              <br/>
+              <button type="submit">Comment</button>
+          </form>
+
+          <h3>Comments</h3>
+          <div v-for="comment in comments[number]">
+              <hr>
+              <p>{{comment.text}}</p>
+              <p><i>-- {{comment.author}} ({{comment.date}})</i></p>
+          </div>
+      </div>
+  </div>
+
+  <div id="footer">
+      Find this page <a href="https://github.com/BYUCS260/xkcd-browser-Azure-Heights">on Github!</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-star-rating@1.7.0/dist/VueStarRating.umd.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/script.js"></script>
+</body>
+
+</html>
